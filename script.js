@@ -6,23 +6,17 @@ var tasks = {};
 
 
 var saveTasks = function() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    
   };
 
-$("#saveBtn .saveBtn").click(function() {
+$(".saveBtn").on('click', function() {
     // get form values
-    var taskText = $("#textarea").val();
-    var taskHour = $("#hour").val();
+    
+    var taskText = $("textarea").val();
+    var taskHour = $(".hour").text();
+    console.log(taskHour)
   
-    saveTasks(taskText, taskHour);
-  
-      // save in tasks array
-      tasks.push({
-        text: taskText,
-        hour: taskHour
-        
-      });
-      
+    localStorage.setItem(taskText, taskHour);
     
   });
     
