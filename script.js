@@ -2,21 +2,23 @@
 var currentDay = moment().format("dddd, MMMM Do YYYY");
 $("#currentDay").text(currentDay);
 
-var tasks = {};
 
 
-var saveTasks = function() {
-    
-  };
 
 $(".saveBtn").on('click', function() {
     // get form values
-    
     var taskText = $("textarea").val();
-    var taskHour = $(".hour").text();
-    console.log(taskHour)
-  
+    var taskHour = $(this).parent().attr("id");
+        
+    //save it to local storage
     localStorage.setItem(taskText, taskHour);
     
   });
+
+
+var loadTasks = function()   {
+    localStorage.getItem(taskText, taskHour);
     
+}
+
+loadTasks();
