@@ -7,17 +7,34 @@ $("#currentDay").text(currentDay);
 
 $(".saveBtn").on('click', function() {
     // get form values
-    var taskText = $("textarea").val();
     var taskHour = $(this).parent().attr("id");
-        
+    var taskText = $("textarea").val();   
+     
     //save it to local storage
-    localStorage.setItem(taskText, taskHour);
+    localStorage.setItem(taskHour, taskText);
     
   });
 
 
+
+
+var currentHour = moment().hour();
+$(".hour").each(function() {
+    var timeBlock = parseInt($(this).prop("id"));
+    console.log(timeBlock)
+    if (timeBlock < currentHour && timeBlock > currentHour - 6){
+        $(this).addClass("list-group-item-danger")
+        console.log(this)
+    }
+})
+
+
+
+
 var loadTasks = function()   {
-    localStorage.getItem(taskText, taskHour);
+    // localStorage.getItem(taskText);
+    var nineAm = localStorage.getItem("9");
+    $("#9 .description").val(nineAm);
     
 }
 
